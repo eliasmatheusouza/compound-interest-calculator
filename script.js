@@ -9,9 +9,12 @@
   const translations = {
     en: {
       pageTitle: "Compound Interest Calculator — Grow Your Wealth",
-      pageDesc: "Free compound interest calculator. See how your investments grow over time with interactive charts and detailed breakdowns.",
-      heroTitle: 'Compound Interest <span class="gradient-text">Calculator</span>',
-      heroSubtitle: "See how your money grows over time with the power of compound interest.",
+      pageDesc:
+        "Free compound interest calculator. See how your investments grow over time with interactive charts and detailed breakdowns.",
+      heroTitle:
+        'Compound Interest <span class="gradient-text">Calculator</span>',
+      heroSubtitle:
+        "See how your money grows over time with the power of compound interest.",
       invDetailsTitle: "Investment Details",
       initialDepositLabel: "Initial Deposit",
       monthlyContribLabel: "Monthly Contribution",
@@ -38,13 +41,16 @@
       thInterest: "Interest",
       thBalance: "Balance",
       footerText: "Built with ♥ — host anywhere as a static site.",
-      chartYearAxis: "Year"
+      chartYearAxis: "Year",
     },
     pt: {
       pageTitle: "Calculadora de Juros Compostos",
-      pageDesc: "Calculadora de juros compostos gratuita. Veja como seus investimentos crescem.",
-      heroTitle: 'Calculadora de <span class="gradient-text">Juros Compostos</span>',
-      heroSubtitle: "Veja como o seu dinheiro cresce ao longo do tempo com o poder dos juros compostos.",
+      pageDesc:
+        "Calculadora de juros compostos gratuita. Veja como seus investimentos crescem.",
+      heroTitle:
+        'Calculadora de <span class="gradient-text">Juros Compostos</span>',
+      heroSubtitle:
+        "Veja como o seu dinheiro cresce ao longo do tempo com o poder dos juros compostos.",
       invDetailsTitle: "Detalhes do Investimento",
       initialDepositLabel: "Depósito Inicial",
       monthlyContribLabel: "Contribuição Mensal",
@@ -71,36 +77,44 @@
       thInterest: "Juros",
       thBalance: "Saldo",
       footerText: "Feito com ♥ — hospede em qualquer lugar como site estático.",
-      chartYearAxis: "Ano"
-    }
+      chartYearAxis: "Ano",
+    },
   };
 
   let currentLang = localStorage.getItem("calcLang") || "pt";
 
   // ── DOM refs ─────────────────────────────────────────
-  const $  = (id) => document.getElementById(id);
-  const initialDeposit     = $("initialDeposit");
+  const $ = (id) => document.getElementById(id);
+  const initialDeposit = $("initialDeposit");
   const monthlyContribution = $("monthlyContribution");
-  const annualRate         = $("annualRate");
-  const years              = $("years");
-  const compoundFreq       = $("compoundFreq");
-  const calculateBtn       = $("calculateBtn");
+  const annualRate = $("annualRate");
+  const years = $("years");
+  const compoundFreq = $("compoundFreq");
+  const calculateBtn = $("calculateBtn");
 
-  const futureValueEl      = $("futureValue");
-  const totalContribEl     = $("totalContributions");
-  const totalInterestEl    = $("totalInterest");
-  const interestPctEl      = $("interestPct");
+  const futureValueEl = $("futureValue");
+  const totalContribEl = $("totalContributions");
+  const totalInterestEl = $("totalInterest");
+  const interestPctEl = $("interestPct");
 
-  const donutCanvas        = $("donutChart");
-  const growthCanvas       = $("growthChart");
-  const tableBody          = document.querySelector("#breakdownTable tbody");
+  const donutCanvas = $("donutChart");
+  const growthCanvas = $("growthChart");
+  const tableBody = document.querySelector("#breakdownTable tbody");
 
   // ── Helpers ──────────────────────────────────────────
   const fmt = (n) => {
-    if (currentLang === 'pt') {
-      return n.toLocaleString("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 });
+    if (currentLang === "pt") {
+      return n.toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL",
+        maximumFractionDigits: 0,
+      });
     }
-    return n.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
+    return n.toLocaleString("en-US", {
+      style: "currency",
+      currency: "USD",
+      maximumFractionDigits: 0,
+    });
   };
 
   // ── Core Calculation ─────────────────────────────────
@@ -204,7 +218,7 @@
 
     const maxVal = schedule[schedule.length - 1].balance;
     const barCount = schedule.length;
-    const gap = Math.max(2, Math.min(6, chartW / barCount * 0.15));
+    const gap = Math.max(2, Math.min(6, (chartW / barCount) * 0.15));
     const barW = Math.max(4, (chartW - gap * (barCount + 1)) / barCount);
 
     // Y-axis gridlines
@@ -214,7 +228,7 @@
     ctx.font = "11px Inter, sans-serif";
     for (let i = 0; i <= gridLines; i++) {
       const val = (maxVal / gridLines) * i;
-      const y = padTop + chartH - (chartH * (val / maxVal));
+      const y = padTop + chartH - chartH * (val / maxVal);
       // Grid line
       ctx.strokeStyle = "rgba(255,255,255,0.05)";
       ctx.lineWidth = 1;
@@ -224,11 +238,12 @@
       ctx.stroke();
       // Label
       ctx.fillStyle = "#64748b";
-      const label = val >= 1000000
-        ? "$" + (val / 1000000).toFixed(1) + "M"
-        : val >= 1000
-        ? "$" + (val / 1000).toFixed(0) + "K"
-        : "$" + val.toFixed(0);
+      const label =
+        val >= 1000000
+          ? "$" + (val / 1000000).toFixed(1) + "M"
+          : val >= 1000
+            ? "$" + (val / 1000).toFixed(0) + "K"
+            : "$" + val.toFixed(0);
       ctx.fillText(label, padLeft - 10, y);
     }
 
@@ -244,14 +259,26 @@
       // Contribution bar
       ctx.fillStyle = "#6366f1";
       ctx.beginPath();
-      ctx.roundRect(x, padTop + chartH - contribH, barW, contribH, [0, 0, 3, 3]);
+      ctx.roundRect(
+        x,
+        padTop + chartH - contribH,
+        barW,
+        contribH,
+        [0, 0, 3, 3],
+      );
       ctx.fill();
 
       // Interest bar (stacked on top)
       if (interestH > 0) {
         ctx.fillStyle = "#34d399";
         ctx.beginPath();
-        ctx.roundRect(x, padTop + chartH - totalH, barW, interestH, [3, 3, 0, 0]);
+        ctx.roundRect(
+          x,
+          padTop + chartH - totalH,
+          barW,
+          interestH,
+          [3, 3, 0, 0],
+        );
         ctx.fill();
       }
 
@@ -290,28 +317,28 @@
 
   // ── Main calculate ──────────────────────────────────
   function calculate() {
-    const P   = Math.max(0, parseFloat(initialDeposit.value) || 0);
+    const P = Math.max(0, parseFloat(initialDeposit.value) || 0);
     const PMT = Math.max(0, parseFloat(monthlyContribution.value) || 0);
-    const r   = Math.max(0, parseFloat(annualRate.value) || 0) / 100;
-    const t   = Math.max(1, parseInt(years.value) || 1);
-    const n   = parseInt(compoundFreq.value);
+    const r = Math.max(0, parseFloat(annualRate.value) || 0) / 100;
+    const t = Math.max(1, parseInt(years.value) || 1);
+    const n = parseInt(compoundFreq.value);
 
     const schedule = computeSchedule(P, PMT, r, n, t);
     const last = schedule[schedule.length - 1];
     const totalDeposits = last.deposits;
     const totalInterest = last.interest;
-    const futureValue   = last.balance;
+    const futureValue = last.balance;
 
     // Update summary
-    futureValueEl.textContent   = fmt(futureValue);
-    totalContribEl.textContent  = fmt(totalDeposits);
+    futureValueEl.textContent = fmt(futureValue);
+    totalContribEl.textContent = fmt(totalDeposits);
     totalInterestEl.textContent = fmt(totalInterest);
 
     const pct = futureValue > 0 ? (totalInterest / futureValue) * 100 : 0;
     interestPctEl.textContent = pct.toFixed(0) + "%";
 
     // Draw charts
-    const contribRatio  = futureValue > 0 ? totalDeposits / futureValue : 1;
+    const contribRatio = futureValue > 0 ? totalDeposits / futureValue : 1;
     const interestRatio = futureValue > 0 ? totalInterest / futureValue : 0;
     drawDonut(contribRatio, interestRatio);
     drawBarChart(schedule);
@@ -330,33 +357,33 @@
   function setLanguage(lang) {
     currentLang = lang;
     localStorage.setItem("calcLang", lang);
-    
-    document.querySelectorAll(".lang-btn").forEach(btn => {
+
+    document.querySelectorAll(".lang-btn").forEach((btn) => {
       btn.classList.toggle("active", btn.dataset.lang === lang);
     });
-    
-    document.querySelectorAll("[data-i18n]").forEach(el => {
+
+    document.querySelectorAll("[data-i18n]").forEach((el) => {
       const key = el.getAttribute("data-i18n");
       if (translations[currentLang][key]) {
-        if (el.tagName === 'META') {
-            el.setAttribute('content', translations[currentLang][key]);
-        } else if (key === 'pageTitle') {
-            document.title = translations[currentLang][key];
+        if (el.tagName === "META") {
+          el.setAttribute("content", translations[currentLang][key]);
+        } else if (key === "pageTitle") {
+          document.title = translations[currentLang][key];
         } else {
-            el.innerHTML = translations[currentLang][key]; // This handles span HTML inside heroTitle gracefully
+          el.innerHTML = translations[currentLang][key]; // This handles span HTML inside heroTitle gracefully
         }
       }
     });
 
-    const isPt = lang === 'pt';
-    document.querySelectorAll(".prefix-currency").forEach(el => {
-        el.textContent = isPt ? "R$" : "$";
+    const isPt = lang === "pt";
+    document.querySelectorAll(".prefix-currency").forEach((el) => {
+      el.textContent = isPt ? "R$" : "$";
     });
 
     calculate();
   }
 
-  document.querySelectorAll(".lang-btn").forEach(btn => {
+  document.querySelectorAll(".lang-btn").forEach((btn) => {
     btn.addEventListener("click", () => setLanguage(btn.dataset.lang));
   });
 
@@ -382,4 +409,49 @@
 
   // Initial setup
   setLanguage(currentLang);
+
+  // ── PIX Modal Logic ─────────────────────────────────
+  const pixModal = document.getElementById("pixModal");
+  const openDonationBtn = document.getElementById("openDonationBtn");
+  const closeModalBtn = document.getElementById("closeModalBtn");
+  const copyPixBtn = document.getElementById("copyPixBtn");
+  const pixCode = document.getElementById("pixCode");
+
+  // Open modal
+  if (openDonationBtn) {
+    openDonationBtn.addEventListener("click", () => {
+      pixModal.classList.add("active");
+    });
+  }
+
+  // Close modal with button
+  if (closeModalBtn) {
+    closeModalBtn.addEventListener("click", () => {
+      pixModal.classList.remove("active");
+    });
+  }
+
+  // Copy PIX Code
+  if (copyPixBtn && pixCode) {
+    copyPixBtn.addEventListener("click", () => {
+      pixCode.select();
+      pixCode.setSelectionRange(0, 99999); // For mobile devices
+
+      try {
+        navigator.clipboard.writeText(pixCode.value).then(() => {
+          const originalText = copyPixBtn.innerHTML;
+          copyPixBtn.innerHTML =
+            '<span class="btn-icon">✅</span> Código Copiado!';
+          copyPixBtn.style.background = "#22c55e"; // Green success color
+
+          setTimeout(() => {
+            copyPixBtn.innerHTML = originalText;
+            copyPixBtn.style.background = ""; // Reset to default CSS
+          }, 3000);
+        });
+      } catch (err) {
+        console.error("Failed to copy text: ", err);
+      }
+    });
+  }
 })();

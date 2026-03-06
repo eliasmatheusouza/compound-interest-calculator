@@ -292,9 +292,62 @@
 
     <footer>
       <p data-i18n="footerText">
-        Built with ♥ — host anywhere as a static site.
+        Calculadora de Juros Compostos &copy; HubDev 2026. Feito com ♥
       </p>
+      <button id="openDonationBtn" class="donation-btn-footer">
+        ❤️ Apoiar este projeto
+      </button>
     </footer>
+
+    <!-- PIX Modal -->
+    <div class="modal-overlay" id="pixModal">
+      <div class="modal-content">
+        <h3>🙏 Ficamos felizes em ajudar você neste momento.</h3>
+        <p>
+          💦 Esta <span class="highlight-blue">Calculadora é gratuita</span> e
+          só continua no ar porque pessoas como você ajudam a mantê-la. Se este
+          site te ajudou agora,
+          <span class="highlight-blue"
+            >considere apoiar para que ele continue ajudando outras
+            pessoas.</span
+          >
+        </p>
+        <p class="heart-text">
+          ❤️
+          <span class="highlight-blue"
+            >Qualquer contribuição faz diferença!</span
+          >
+        </p>
+        <p class="receiver-text">
+          Recebedor: <strong>Elias Matheus De Souza</strong>
+        </p>
+
+        <div class="pix-section">
+          <h4>Escaneie ou copie o código PIX</h4>
+          <div class="pix-qr-container">
+            <img
+              class="pix-qr-img"
+              src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=00020101021126330014br.gov.bcb.pix0111099755206935204000053039865802BR5922ELIAS%20MATHEUS%20DE%20SOUZA6013CORONEL%20FABRI62070503***63047164"
+              alt="QR Code PIX"
+            />
+          </div>
+          <div class="pix-box">
+            <div class="pix-code-container">
+              <textarea id="pixCode" readonly>
+00020101021126330014br.gov.bcb.pix0111099755206935204000053039865802BR5922ELIAS MATHEUS DE SOUZA6013CORONEL FABRI62070503***63047164</textarea
+              >
+            </div>
+            <button id="copyPixBtn" class="copy-btn">
+              <span class="btn-icon">💚</span> Copiar código PIX
+            </button>
+          </div>
+        </div>
+
+        <button id="closeModalBtn" class="close-modal-btn">
+          Continuar sem contribuir
+        </button>
+      </div>
+    </div>
 
     <script src="script.js"></script>
   </body>
