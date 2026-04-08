@@ -42,6 +42,12 @@
       thBalance: "Balance",
       footerText: "Built with ♥ — host anywhere as a static site.",
       chartYearAxis: "Year",
+      articleTitle: "Understanding Compound Interest",
+      articleP1: "Compound interest is the addition of interest to the principal sum of a loan or deposit. It is the result of reinvesting interest, rather than paying it out, so that interest in the next period is then earned on the principal sum plus previously accumulated interest.",
+      articleH3_1: "How does the snowball effect work?",
+      articleP2: "Unlike simple interest, which only calculates interest on the initial amount, compound interest calculates interest on both the initial principal and the accumulated interest from previous periods. This allows your money to grow exponentially faster over time.",
+      articleH3_2: "Why use this calculator?",
+      articleP3: "Calculating compound interest manually is complex, especially with regular monthly contributions. This free calculator helps you visualize your future wealth, plan your retirement, and understand the massive impact of starting to invest early.",
     },
     pt: {
       pageTitle: "Calculadora de Juros Compostos",
@@ -78,6 +84,12 @@
       thBalance: "Saldo",
       footerText: "Feito com ♥ — hospede em qualquer lugar como site estático.",
       chartYearAxis: "Ano",
+      articleTitle: "Entendendo os Juros Compostos",
+      articleP1: "Os juros compostos são a adição de juros ao valor principal de um investimento ou empréstimo. É o resultado do reinvestimento dos juros, em vez de retirá-los, de modo que os juros do próximo período sejam calculados sobre o valor principal acrescido dos juros acumulados anteriormente.",
+      articleH3_1: "Como funciona o efeito bola de neve?",
+      articleP2: "Diferente dos juros simples, que rendem apenas sobre o valor inicial, os juros compostos rendem sobre o valor inicial e também sobre os juros acumulados dos meses anteriores. Isso faz com que o seu dinheiro cresça de forma exponencialmente mais rápida ao longo do tempo.",
+      articleH3_2: "Por que usar esta calculadora?",
+      articleP3: "Calcular juros compostos manualmente é complexo, especialmente com contribuições mensais regulares. Nossa calculadora gratuita ajuda você a visualizar seu patrimônio futuro, planejar sua aposentadoria e entender o impacto gigantesco de começar a investir cedo.",
     },
   };
 
